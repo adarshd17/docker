@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Build and push to Docker Hub
           command: |
-            docker build -t $adarshd7/$task:latest .
+            docker build -t $task .
             echo "$Adarsh@17" | docker login -u "$adarshd7" --password-stdin
             docker push $adarshd7/$task:latest
 
