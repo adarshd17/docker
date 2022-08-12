@@ -18,3 +18,25 @@ workflows:
   build-master:
     jobs:
       - build
+deploy:
+    docker:
+      - image: cimg/base:2022.06
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - run:
+          name: Build and push to Docker Hub
+          command: |
+            docker build -t $adarshd7/$task:latest .
+            echo "$Adarsh@17" | docker login -u "$adarshd7" --password-stdin
+            docker push $adarshd7/$task:latest
+
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
