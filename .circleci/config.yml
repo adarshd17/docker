@@ -12,12 +12,7 @@ jobs:
             . venv/bin/activate
            
 
-      - run:
-          name: Test with pytest
-          command: |
-            . venv/bin/activate
-            pytest
-
+    
 workflows:
   version: 2
   build-master:
