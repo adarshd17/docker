@@ -22,9 +22,9 @@ jobs:
       - run:
           name: Build and push to Docker Hub
           command: |
-            docker build -t $task .
-            echo "$Adarsh@17" | docker login -u "$adarshd7" --password-stdin
-            docker push $adarshd7/$task:latest
+            docker build -t $DOCKER_HUB_USER_ID/$IMAGE_NAME:latest .
+            echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USER_ID" --password-stdin
+            docker push $DOCKER_HUB_USER_ID/$IMAGE_NAME:latest
 
 workflows:
   version: 2
